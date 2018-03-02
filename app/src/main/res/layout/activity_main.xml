@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context="pl.cookiez.android_hiragana.MainActivity">
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -29,9 +29,12 @@
                 android:id="@+id/tv_what_is_it"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:text="a"
+                android:text="あ"
                 android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent"
                 android:textSize="80sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -48,21 +51,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="btt_00" />
+                android:background="@color/colorPrimary"
+                android:text="a"
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent"
+                android:textSize="30sp" />
 
             <Button
                 android:id="@+id/btt_2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="btt_01" />
+                android:background="@color/colorPrimary"
+                android:text="i"
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent"
+                android:textSize="30sp" />
 
             <Button
                 android:id="@+id/btt_3"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="btt_02" />
+                android:background="@color/colorPrimary"
+                android:text="u"
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent"
+                android:textSize="30sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -75,21 +90,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="btt_10" />
+                android:background="@color/colorPrimary"
+                android:text="e"
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent"
+                android:textSize="30sp" />
 
             <Button
                 android:id="@+id/btt_5"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="btt_11" />
+                android:background="@color/colorPrimary"
+                android:text="o"
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent"
+                android:textSize="30sp" />
 
             <Button
                 android:id="@+id/btt_6"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="btt_12" />
+                android:background="@color/colorPrimary"
+                android:text="ka"
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent"
+                android:textSize="30sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -102,30 +129,44 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="btt_20" />
+                android:background="@color/colorPrimary"
+                android:text="ki"
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent"
+                android:textSize="30sp" />
 
             <Button
                 android:id="@+id/btt_8"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="btt_21" />
+                android:background="@color/colorPrimary"
+                android:text="ku"
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent"
+                android:textSize="30sp" />
 
             <Button
                 android:id="@+id/btt_9"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="btt_22" />
+                android:background="@color/colorPrimary"
+                android:text="ke"
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent"
+                android:textSize="30sp" />
         </LinearLayout>
 
         <Button
             android:id="@+id/btt_next"
             android:layout_width="match_parent"
             android:layout_height="80dp"
+            android:background="@color/colorAccent"
             android:text="Następne"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -1,38 +1,65 @@
 package pl.cookiez.android_hiragana;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
     String[] bttsC = new String[9];
 
-
-    //int hmChars = 48;
-    int hmChars = 10;
+    int hmChars = 48;
+    int whichCharIsTrue;
     String[] lati = new String[hmChars];
     String[] hira = new String[hmChars];
-    int whichCharIsTrue;
-
     Button[] btts = new Button[9];
     Button btt_next;
     TextView tv_what_is_it;
     Random rand;
 
+    public void check(Button btt){
+
+        //ukrycie wszystkich guzikow
+        for(int i = 0; i < 9; i++){
+            btts[i].setVisibility(View.INVISIBLE);
+        }
+
+        //odkrycie naciśniętego guzika i nadanie koloru na czerwony
+        btt.setVisibility(View.VISIBLE);
+        btt.setBackgroundColor(getResources().getColor(R.color.WrongColorPrimary));
+        btt.setTextColor(getResources().getColor(R.color.WrongColorAccent));
+
+        //odkrycie poprawnego guzika i danie mu koloru na zielony (nawet jeżeli wcześniej dano na czerwony)
+        for(int i = 0; i < 9; i++){
+            if(btts[i].getText().toString() == lati[whichCharIsTrue]){
+
+                btts[i].setVisibility(View.VISIBLE);
+                btts[i].setBackgroundColor(getResources().getColor(R.color.CorrectColorPrimary));
+                btts[i].setTextColor(getResources().getColor(R.color.CorrectColorAccent));
+
+                break;
+            }
+        }
+    }
+
+    private void clearButtons(){
+        for(int i = 0; i < 9; i++){
+            //btts[i].setBackgroundResource(R.color.colorPrimary);
+            btts[i].setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            btts[i].setTextColor(getResources().getColor(R.color.colorAccent));
+            btts[i].setVisibility(View.VISIBLE);
+        }
+    }
+
     public void losuj(){
 
-        Log.i("losuj", "start");
+        clearButtons();
+
         //odpowiedz
         whichCharIsTrue = rand.nextInt(hmChars);
         tv_what_is_it.setText(hira[whichCharIsTrue]);
@@ -41,15 +68,11 @@ public class MainActivity extends AppCompatActivity {
         //przypisanie do guzików innych losowych odp
         Boolean alreadyExist = false;
         for(int i = 1; i < 9; i++){
-            //Log.i("for i", String.valueOf(i));
             do{
                 alreadyExist = false;
                 bttsC[i] = lati[rand.nextInt(hmChars)];
                 for(int j = 0; j < i; j++){
-                    //Log.i("for j", String.valueOf(j));
-                    Log.i("for j", bttsC[i] + " == " + bttsC[j]);
                     if(bttsC[i] == bttsC[j]){
-                        Log.i("for j", "alreadyExist");
                         alreadyExist = true;
                         break;
                     }
@@ -96,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         lati[nr] = "ke";    hira[nr]="け";   nr++;
         lati[nr] = "ko";    hira[nr]="こ";   nr++;
 
-        /*lati[nr] = "sa";    hira[nr]="さ";   nr++;
+        lati[nr] = "sa";    hira[nr]="さ";   nr++;
         lati[nr] = "si";    hira[nr]="し";   nr++;
         lati[nr] = "su";    hira[nr]="す";   nr++;
         lati[nr] = "se";    hira[nr]="せ";   nr++;
@@ -140,13 +163,69 @@ public class MainActivity extends AppCompatActivity {
         lati[nr] = "wi";    hira[nr]="ゐ";   nr++;
         lati[nr] = "we";    hira[nr]="ゑ";   nr++;
         lati[nr] = "wo";    hira[nr]="を";   nr++;
-        lati[nr] = "nn";    hira[nr]="ん";   nr++;*/
+        lati[nr] = "nn";    hira[nr]="ん";   nr++;
+
+        losuj();
 
         btt_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i("btt next", "start");
                 losuj();
+            }
+        });
+
+        btts[0].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                check(btts[0]);
+            }
+        });
+        btts[1].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                check(btts[1]);
+            }
+        });
+        btts[2].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                check(btts[2]);
+            }
+        });
+        btts[3].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                check(btts[3]);
+            }
+        });
+        btts[4].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                check(btts[4]);
+            }
+        });
+        btts[5].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                check(btts[5]);
+            }
+        });
+        btts[6].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                check(btts[6]);
+            }
+        });
+        btts[7].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                check(btts[7]);
+            }
+        });
+        btts[8].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                check(btts[8]);
             }
         });
 
