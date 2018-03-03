@@ -49,14 +49,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void clearButtons(){
         for(int i = 0; i < 9; i++){
-            //btts[i].setBackgroundResource(R.color.colorPrimary);
             btts[i].setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             btts[i].setTextColor(getResources().getColor(R.color.colorAccent));
             btts[i].setVisibility(View.VISIBLE);
         }
     }
 
-    public void losuj(){
+    private void losuj(){
 
         clearButtons();
 
@@ -80,6 +79,13 @@ public class MainActivity extends AppCompatActivity {
             }while(alreadyExist);
         }
         //mieszanie guzików
+        for(int i = 8; i > 0; i--){
+            int index = rand.nextInt(i + 1);
+            // Simple swap
+            String a = bttsC[index];
+            bttsC[index] = bttsC[i];
+            bttsC[i] = a;
+        }
 
         //wypisanie guzików
         for(int i = 0; i < 9; i++){
