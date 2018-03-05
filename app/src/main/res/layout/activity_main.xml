@@ -15,7 +15,6 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="あ"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/colorAccent"
@@ -28,13 +27,11 @@
     <Button
         android:id="@+id/btt_next"
         android:layout_width="0dp"
-        android:layout_height="120dp"
-        android:layout_columnWeight="3"
+        android:layout_height="60dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_rowWeight="1"
         android:background="@color/colorAccent"
-        android:text="Następne"
+        android:text="@string/skip"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="24sp"
@@ -56,7 +53,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.131"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_what_is_it">
+        app:layout_constraintTop_toBottomOf="@+id/tv_what_is_it" tools:targetApi="lollipop">
 
         <Button
             android:id="@+id/btt_1"
@@ -64,12 +61,11 @@
             android:layout_height="30dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:layout_weight="1"
             android:background="@color/colorPrimary"
-            android:text="a"
             android:textAllCaps="false"
             android:textColor="@color/colorAccent"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            tools:targetApi="lollipop" />
 
         <Button
             android:id="@+id/btt_2"
@@ -77,12 +73,11 @@
             android:layout_height="30dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:layout_weight="1"
             android:background="@color/colorPrimary"
-            android:text="i"
             android:textAllCaps="false"
             android:textColor="@color/colorAccent"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            tools:targetApi="lollipop" />
 
         <Button
             android:id="@+id/btt_3"
@@ -90,12 +85,11 @@
             android:layout_height="30dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:layout_weight="1"
             android:background="@color/colorPrimary"
-            android:text="u"
             android:textAllCaps="false"
             android:textColor="@color/colorAccent"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            tools:targetApi="lollipop" />
 
         <Button
             android:id="@+id/btt_4"
@@ -103,12 +97,11 @@
             android:layout_height="30dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:layout_weight="1"
             android:background="@color/colorPrimary"
-            android:text="e"
             android:textAllCaps="false"
             android:textColor="@color/colorAccent"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            tools:targetApi="lollipop" />
 
         <Button
             android:id="@+id/btt_5"
@@ -116,9 +109,7 @@
             android:layout_height="30dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:layout_weight="1"
             android:background="@color/colorPrimary"
-            android:text="o"
             android:textAllCaps="false"
             android:textColor="@color/colorAccent"
             android:textSize="30sp" />
@@ -129,9 +120,7 @@
             android:layout_height="30dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:layout_weight="1"
             android:background="@color/colorPrimary"
-            android:text="ka"
             android:textAllCaps="false"
             android:textColor="@color/colorAccent"
             android:textSize="30sp" />
@@ -142,9 +131,7 @@
             android:layout_height="30dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:layout_weight="1"
             android:background="@color/colorPrimary"
-            android:text="ki"
             android:textAllCaps="false"
             android:textColor="@color/colorAccent"
             android:textSize="30sp" />
@@ -155,9 +142,7 @@
             android:layout_height="30dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:layout_weight="1"
             android:background="@color/colorPrimary"
-            android:text="ku"
             android:textAllCaps="false"
             android:textColor="@color/colorAccent"
             android:textSize="30sp" />
@@ -168,9 +153,7 @@
             android:layout_height="30dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:layout_weight="1"
             android:background="@color/colorPrimary"
-            android:text="ke"
             android:textAllCaps="false"
             android:textColor="@color/colorAccent"
             android:textSize="30sp" />
