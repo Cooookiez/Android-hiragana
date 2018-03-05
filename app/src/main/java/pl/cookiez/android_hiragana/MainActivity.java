@@ -7,9 +7,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+
+    private AdView mAdView;
 
     String[] bttsC = new String[9];
 
@@ -104,6 +113,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        /*  AdMob       */
+        //MobileAds.initialize(this, "ca-app-pub-9317173642585148~2178125680"); //releace
+        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713"); //debug
+
+        AdView adView = new AdView(this);
+        adView.setAdSize(AdSize.SMART_BANNER);
+        //adView.setAdUnitId("ca-app-pub-9317173642585148/9198829602"); //releace
+        adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111"); //debug
+
+        mAdView = findViewById(R.id.adBaner);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        /*  AdMob END   */
 
         btt_next = (Button)findViewById(R.id.btt_next);
         tv_what_is_it = (TextView)findViewById(R.id.tv_what_is_it);
