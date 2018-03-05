@@ -21,29 +21,35 @@ public class MainActivity extends AppCompatActivity {
     Button btt_next;
     TextView tv_what_is_it;
     Random rand;
+    boolean podgladPoprawnej = false;
 
     public void check(Button btt){
+        if(!podgladPoprawnej){ //w tje chwili jest wyświetlona poprawna odpowiedź
 
-        //ukrycie wszystkich guzikow
-        for(int i = 0; i < 9; i++){
-            btts[i].setVisibility(View.INVISIBLE);
-        }
+            podgladPoprawnej = true;
 
-        //odkrycie naciśniętego guzika i nadanie koloru na czerwony
-        btt.setVisibility(View.VISIBLE);
-        btt.setBackgroundColor(getResources().getColor(R.color.WrongColorPrimary));
-        btt.setTextColor(getResources().getColor(R.color.WrongColorAccent));
-
-        //odkrycie poprawnego guzika i danie mu koloru na zielony (nawet jeżeli wcześniej dano na czerwony)
-        for(int i = 0; i < 9; i++){
-            if(btts[i].getText().toString() == lati[whichCharIsTrue]){
-
-                btts[i].setVisibility(View.VISIBLE);
-                btts[i].setBackgroundColor(getResources().getColor(R.color.CorrectColorPrimary));
-                btts[i].setTextColor(getResources().getColor(R.color.CorrectColorAccent));
-
-                break;
+            //ukrycie wszystkich guzikow
+            for(int i = 0; i < 9; i++){
+                btts[i].setTextColor(getResources().getColor(R.color.colorPrimary));
             }
+
+            //odkrycie naciśniętego guzika i nadanie koloru na czerwony
+            btt.setBackgroundColor(getResources().getColor(R.color.WrongColorPrimary));
+            btt.setTextColor(getResources().getColor(R.color.WrongColorAccent));
+
+            //odkrycie poprawnego guzika i danie mu koloru na zielony (nawet jeżeli wcześniej dano na czerwony)
+            for(int i = 0; i < 9; i++){
+                if(btts[i].getText().toString() == lati[whichCharIsTrue]){
+
+                    btts[i].setBackgroundColor(getResources().getColor(R.color.CorrectColorPrimary));
+                    btts[i].setTextColor(getResources().getColor(R.color.CorrectColorAccent));
+
+                    break;
+                }
+            }
+
+        }else{
+            losuj();
         }
     }
 
@@ -51,11 +57,12 @@ public class MainActivity extends AppCompatActivity {
         for(int i = 0; i < 9; i++){
             btts[i].setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             btts[i].setTextColor(getResources().getColor(R.color.colorAccent));
-            btts[i].setVisibility(View.VISIBLE);
         }
     }
 
     private void losuj(){
+
+        podgladPoprawnej = false;
 
         clearButtons();
 
