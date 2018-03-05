@@ -5,168 +5,175 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context="pl.cookiez.android_hiragana.MainActivity">
+    tools:context="pl.cookiez.android_hiragana.MainActivity"
+    tools:layout_editor_absoluteY="81dp">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tv_what_is_it"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="あ"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/colorAccent"
+        android:textSize="80sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btt_next"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_columnWeight="3"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_rowWeight="1"
+        android:background="@color/colorAccent"
+        android:text="Następne"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <GridLayout
+        android:id="@+id/gridLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:gravity="bottom"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:columnCount="3"
+        android:elevation="0dp"
+        android:rowCount="5"
+        app:layout_constraintBottom_toTopOf="@+id/btt_next"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.131"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="120dp">
-
-            <TextView
-                android:id="@+id/tv_what_is_it"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:text="あ"
-                android:textAlignment="center"
-                android:textAllCaps="false"
-                android:textColor="@color/colorAccent"
-                android:textSize="80sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </android.support.constraint.ConstraintLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btt_1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimary"
-                android:text="a"
-                android:textAllCaps="false"
-                android:textColor="@color/colorAccent"
-                android:textSize="30sp" />
-
-            <Button
-                android:id="@+id/btt_2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimary"
-                android:text="i"
-                android:textAllCaps="false"
-                android:textColor="@color/colorAccent"
-                android:textSize="30sp" />
-
-            <Button
-                android:id="@+id/btt_3"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimary"
-                android:text="u"
-                android:textAllCaps="false"
-                android:textColor="@color/colorAccent"
-                android:textSize="30sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btt_4"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimary"
-                android:text="e"
-                android:textAllCaps="false"
-                android:textColor="@color/colorAccent"
-                android:textSize="30sp" />
-
-            <Button
-                android:id="@+id/btt_5"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimary"
-                android:text="o"
-                android:textAllCaps="false"
-                android:textColor="@color/colorAccent"
-                android:textSize="30sp" />
-
-            <Button
-                android:id="@+id/btt_6"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimary"
-                android:text="ka"
-                android:textAllCaps="false"
-                android:textColor="@color/colorAccent"
-                android:textSize="30sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btt_7"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimary"
-                android:text="ki"
-                android:textAllCaps="false"
-                android:textColor="@color/colorAccent"
-                android:textSize="30sp" />
-
-            <Button
-                android:id="@+id/btt_8"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimary"
-                android:text="ku"
-                android:textAllCaps="false"
-                android:textColor="@color/colorAccent"
-                android:textSize="30sp" />
-
-            <Button
-                android:id="@+id/btt_9"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimary"
-                android:text="ke"
-                android:textAllCaps="false"
-                android:textColor="@color/colorAccent"
-                android:textSize="30sp" />
-        </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/tv_what_is_it">
 
         <Button
-            android:id="@+id/btt_next"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="@color/colorAccent"
-            android:text="Następne"
+            android:id="@+id/btt_1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="a"
             android:textAllCaps="false"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="24sp" />
+            android:textColor="@color/colorAccent"
+            android:textSize="30sp" />
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/btt_2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="i"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/btt_3"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="u"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/btt_4"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="e"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/btt_5"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="o"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/btt_6"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="ka"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/btt_7"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="ki"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/btt_8"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="ku"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/btt_9"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="ke"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent"
+            android:textSize="30sp" />
+
+    </GridLayout>
 </android.support.constraint.ConstraintLayout>
