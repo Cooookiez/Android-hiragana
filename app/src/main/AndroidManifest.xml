@@ -17,5 +17,6 @@
             </intent-filter>
         </activity>
     </application>
+    <permission android:name="android.permission-group.LOCATION"></permission>
 
 </manifest>
