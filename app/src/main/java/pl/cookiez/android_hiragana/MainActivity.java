@@ -3,9 +3,15 @@ package pl.cookiez.android_hiragana;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ShareActionProvider;
@@ -19,11 +25,11 @@ import com.google.android.gms.ads.AdView;
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private AdView mAdView;
-    String adMobAppId;
-    String adMobUnitId;
+    String adMobAppId = "ca-app-pub-9317173642585148~2178125680";
+    String adMobUnitId = "ca-app-pub-9317173642585148/9198829602";
 
     String[] bttsC = new String[9];
 
@@ -227,13 +233,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initAdMob(){
-        /*  releace */
-        adMobAppId = "ca-app-pub-9317173642585148~2178125680";
-        adMobUnitId = "ca-app-pub-9317173642585148/9198829602";
-        /*  debug   */
-//        adMobAppId = "ca-app-pub-3940256099942544~3347511713";
-//        adMobUnitId = "ca-app-pub-3940256099942544/6300978111";
-
 
         MobileAds.initialize(this, adMobAppId);
 
@@ -250,6 +249,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        /*  toolbar */
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+            //toolbar.setTitleTextColor(getResources().getColor(R.color.colorAccent));
+
+        DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
         initVariables();
         initAdMob();
 
@@ -317,6 +326,16 @@ public class MainActivity extends AppCompatActivity {
                 check(8);
             }
         });
+
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
 }
