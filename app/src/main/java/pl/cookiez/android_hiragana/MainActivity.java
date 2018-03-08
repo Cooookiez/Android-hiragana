@@ -109,24 +109,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        /*  AdMob       */
-        //MobileAds.initialize(this, "ca-app-pub-9317173642585148~2178125680"); //releace
-        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713"); //debug
-
-        AdView adView = new AdView(this);
-        adView.setAdSize(AdSize.SMART_BANNER);
-        //adView.setAdUnitId("ca-app-pub-9317173642585148/9198829602"); //releace
-        adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111"); //debug
-
-        mAdView = findViewById(R.id.adBaner);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-        /*  AdMob END   */
+    private void initVariables(){
 
         btt_next = (Button)findViewById(R.id.btt_next);
         tv_what_is_it = (TextView)findViewById(R.id.tv_what_is_it);
@@ -200,6 +183,29 @@ public class MainActivity extends AppCompatActivity {
         lati[nr] = "we";    hira[nr]="ゑ";   nr++;
         lati[nr] = "wo";    hira[nr]="を";   nr++;
         lati[nr] = "nn";    hira[nr]="ん";   nr++;
+    }
+
+    private void initAdMob(){
+        //MobileAds.initialize(this, "ca-app-pub-9317173642585148~2178125680"); //releace
+        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713"); //debug
+
+        AdView adView = new AdView(this);
+        adView.setAdSize(AdSize.SMART_BANNER);
+        //adView.setAdUnitId("ca-app-pub-9317173642585148/9198829602"); //releace
+        adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111"); //debug
+
+        mAdView = findViewById(R.id.adBaner);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        initVariables();
+        initAdMob();
 
         losuj();
 
