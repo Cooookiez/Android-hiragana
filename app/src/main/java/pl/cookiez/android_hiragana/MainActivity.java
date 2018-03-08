@@ -1,11 +1,14 @@
 package pl.cookiez.android_hiragana;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ShareActionProvider;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdSize;
@@ -29,37 +32,63 @@ public class MainActivity extends AppCompatActivity {
     Button[] btts = new Button[9];
     Button btt_next;
     TextView tv_what_is_it;
+    TextView tv_hira2lati_correct;
+    TextView tv_hira2lati_wrong;
     Random rand;
     boolean podgladPoprawnej = false;
+    SharedPreferences sharedPreferences;
 
-    public void check(Button btt){
+    public void check(int btt_nr){
         if(!podgladPoprawnej){ //w tje chwili jest wyświetlona poprawna odpowiedź
-
             podgladPoprawnej = true;
 
-            //ukrycie wszystkich guzikow
-            for(int i = 0; i < 9; i++){
-                btts[i].setTextColor(getResources().getColor(R.color.colorPrimary));
-            }
-
-            //odkrycie naciśniętego guzika i nadanie koloru na czerwony
-            btt.setBackgroundColor(getResources().getColor(R.color.WrongColorPrimary));
-            btt.setTextColor(getResources().getColor(R.color.WrongColorAccent));
-
-            //odkrycie poprawnego guzika i danie mu koloru na zielony (nawet jeżeli wcześniej dano na czerwony)
+            //kturt guzik jest dobry
+            int correctBotton = 0;
             for(int i = 0; i < 9; i++){
                 if(btts[i].getText().toString() == lati[whichCharIsTrue]){
-
-                    btts[i].setBackgroundColor(getResources().getColor(R.color.CorrectColorPrimary));
-                    btts[i].setTextColor(getResources().getColor(R.color.CorrectColorAccent));
-
+                    correctBotton = i;
+                    Log.i("correct btt", String.valueOf(correctBotton));
                     break;
                 }
             }
 
+            //dodanie punktu do jednej z zmiennyhc trwałyhc
+            if(correctBotton == btt_nr){//poprawne
+                int val = sharedPreferences.getInt("hira2lati_correct",0);
+                val++;
+                sharedPreferences.edit().putInt("hira2lati_correct", val).apply();
+            }else{//niepoprawne
+                int val = sharedPreferences.getInt("hira2lati_wrong",0);
+                val++;
+                sharedPreferences.edit().putInt("hira2lati_wrong", val).apply();
+            }
+            writeScore();
+
+            //podkreslenie nacisniety przez usr guzik na czerwono
+            btts[btt_nr].setBackgroundColor(getResources().getColor(R.color.WrongColorPrimary));
+            btts[btt_nr].setTextColor(getResources().getColor(R.color.WrongColorAccent));
+            //podkreslna dobry guzik na zielono (nadpisuje guzik usr'a jezli ten kliknol dobrze)
+            btts[correctBotton].setBackgroundColor(getResources().getColor(R.color.CorrectColorPrimary));
+            btts[correctBotton].setTextColor(getResources().getColor(R.color.CorrectColorAccent));
+
+
         }else{
             losuj();
         }
+    }
+
+    private void writeScore(){
+        int correct = sharedPreferences.getInt("hira2lati_correct", 0);
+        int wrong = sharedPreferences.getInt("hira2lati_wrong", 0);
+
+        Log.i("writeScore_correct",String.valueOf(correct));
+        Log.i("writeScore_wrong",String.valueOf(wrong));
+
+        if(correct>9999) tv_hira2lati_correct.setText("9999+");
+        else tv_hira2lati_correct.setText(String.valueOf(correct));
+
+        if(wrong>9999) tv_hira2lati_wrong.setText("9999+");
+        else tv_hira2lati_wrong.setText(String.valueOf(wrong));
     }
 
     private void clearButtons(){
@@ -111,10 +140,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void initVariables(){
 
+        sharedPreferences = this.getSharedPreferences("pl.cookiez.android_hiragana", Context.MODE_PRIVATE);
+
         btt_next = (Button)findViewById(R.id.btt_next);
         tv_what_is_it = (TextView)findViewById(R.id.tv_what_is_it);
+        tv_hira2lati_correct = (TextView)findViewById(R.id.tv_hira2lati_correct);
+        tv_hira2lati_wrong = (TextView)findViewById(R.id.tv_hira2lati_wrong);
         rand = new Random();
-        int nr = 0;
 
         btts[0] = (Button)findViewById(R.id.btt_1);
         btts[1] = (Button)findViewById(R.id.btt_2);
@@ -126,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
         btts[7] = (Button)findViewById(R.id.btt_8);
         btts[8] = (Button)findViewById(R.id.btt_9);
 
+        int nr = 0;
         lati[nr] = "a";     hira[nr]="あ";   nr++;
         lati[nr] = "i";     hira[nr]="い";   nr++;
         lati[nr] = "u";     hira[nr]="う";   nr++;
@@ -203,12 +236,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initVariables();
         initAdMob();
 
-        losuj();
+        writeScore();
 
+        losuj();
         btt_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -219,55 +252,55 @@ public class MainActivity extends AppCompatActivity {
         btts[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                check(btts[0]);
+                check(0);
             }
         });
         btts[1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                check(btts[1]);
+                check(1);
             }
         });
         btts[2].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                check(btts[2]);
+                check(2);
             }
         });
         btts[3].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                check(btts[3]);
+                check(3);
             }
         });
         btts[4].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                check(btts[4]);
+                check(4);
             }
         });
         btts[5].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                check(btts[5]);
+                check(5);
             }
         });
         btts[6].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                check(btts[6]);
+                check(6);
             }
         });
         btts[7].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                check(btts[7]);
+                check(7);
             }
         });
         btts[8].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                check(btts[8]);
+                check(8);
             }
         });
 
