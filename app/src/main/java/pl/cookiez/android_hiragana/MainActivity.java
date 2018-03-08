@@ -22,6 +22,8 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     private AdView mAdView;
+    String adMobAppId;
+    String adMobUnitId;
 
     String[] bttsC = new String[9];
 
@@ -63,6 +65,12 @@ public class MainActivity extends AppCompatActivity {
                 sharedPreferences.edit().putInt("hira2lati_wrong", val).apply();
             }
             writeScore();
+
+            //"Wyczyszcza wszystkie guziki
+            for(int i = 0; i < 9; i++){
+                btts[i].setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                btts[i].setTextColor(getResources().getColor(R.color.colorPrimary));
+            }
 
             //podkreslenie nacisniety przez usr guzik na czerwono
             btts[btt_nr].setBackgroundColor(getResources().getColor(R.color.WrongColorPrimary));
@@ -219,13 +227,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initAdMob(){
-        //MobileAds.initialize(this, "ca-app-pub-9317173642585148~2178125680"); //releace
-        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713"); //debug
+        /*  releace */
+        adMobAppId = "ca-app-pub-9317173642585148~2178125680";
+        adMobUnitId = "ca-app-pub-9317173642585148/9198829602";
+        /*  debug   */
+//        adMobAppId = "ca-app-pub-3940256099942544~3347511713";
+//        adMobUnitId = "ca-app-pub-3940256099942544/6300978111";
+
+
+        MobileAds.initialize(this, adMobAppId);
 
         AdView adView = new AdView(this);
         adView.setAdSize(AdSize.SMART_BANNER);
-        //adView.setAdUnitId("ca-app-pub-9317173642585148/9198829602"); //releace
-        adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111"); //debug
+        adView.setAdUnitId(adMobUnitId);
 
         mAdView = findViewById(R.id.adBaner);
         AdRequest adRequest = new AdRequest.Builder().build();

@@ -17,6 +17,6 @@
             </intent-filter>
         </activity>
     </application>
-    <permission android:name="android.permission-group.LOCATION"></permission>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
 
 </manifest>
