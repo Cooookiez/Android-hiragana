@@ -5,17 +5,22 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ShareActionProvider;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
@@ -55,7 +60,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             for(int i = 0; i < 9; i++){
                 if(btts[i].getText().toString() == lati[whichCharIsTrue]){
                     correctBotton = i;
-                    Log.i("correct btt", String.valueOf(correctBotton));
                     break;
                 }
             }
@@ -94,9 +98,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void writeScore(){
         int correct = sharedPreferences.getInt("hira2lati_correct", 0);
         int wrong = sharedPreferences.getInt("hira2lati_wrong", 0);
-
-        Log.i("writeScore_correct",String.valueOf(correct));
-        Log.i("writeScore_wrong",String.valueOf(wrong));
 
         if(correct>9999) tv_hira2lati_correct.setText("9999+");
         else tv_hira2lati_correct.setText(String.valueOf(correct));
@@ -233,6 +234,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void initAdMob(){
+        /*relace*/
+        adMobAppId = "ca-app-pub-9317173642585148~2178125680";
+        adMobUnitId = "ca-app-pub-9317173642585148/9198829602";
+        /*debug*/
+        adMobAppId = "ca-app-pub-3940256099942544~3347511713";
+        adMobUnitId = "ca-app-pub-3940256099942544/6300978111";
+
 
         MobileAds.initialize(this, adMobAppId);
 
@@ -250,14 +258,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         /*  toolbar */
-            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
-            //toolbar.setTitleTextColor(getResources().getColor(R.color.colorAccent));
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        //Snackbar.make(this.findViewById(android.R.id.content).getRootView(), "id: "+String.valueOf(id), Snackbar.LENGTH_SHORT);
 
         initVariables();
         initAdMob();
@@ -330,12 +342,46 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return false;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
     }
 
     @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
 
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            ViewFlipper vf_views = (ViewFlipper)findViewById(R.id.vf_views);
+            vf_views.setDisplayedChild(1);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        ViewFlipper vf_views = (ViewFlipper)findViewById(R.id.vf_views);
+
+        switch (id){
+            case R.id.mi_hira2lati: vf_views.setDisplayedChild(0); break;
+            case R.id.mi_settings:  vf_views.setDisplayedChild(1); break;
+        }
+
+        Log.e("item id", String.valueOf(id));
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 }
