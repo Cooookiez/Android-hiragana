@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">Hiragana</string>
-    <string name="skip">Skip</string>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="settings">Settings</string>
-</resources>
