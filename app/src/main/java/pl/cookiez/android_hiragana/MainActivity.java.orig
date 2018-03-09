@@ -233,12 +233,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void initAdMob(){
+<<<<<<< HEAD
+        MobileAds.initialize(this, "ca-app-pub-9317173642585148~2178125680"); //releace
+        //MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713"); //debug
+
+        AdView adView = new AdView(this);
+        adView.setAdSize(AdSize.SMART_BANNER);
+        adView.setAdUnitId("ca-app-pub-9317173642585148/9198829602"); //releace
+        //adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111"); //debug
+=======
 
         MobileAds.initialize(this, adMobAppId);
 
         AdView adView = new AdView(this);
         adView.setAdSize(AdSize.SMART_BANNER);
         adView.setAdUnitId(adMobUnitId);
+>>>>>>> master
 
         mAdView = findViewById(R.id.adBaner);
         AdRequest adRequest = new AdRequest.Builder().build();

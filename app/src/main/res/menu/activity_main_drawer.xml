@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item android:title="Game mode">
+        <menu>
+            <item
+                android:icon="@drawable/ic_arrow_alt_right"
+                android:title="あ → a" />
+            <item
+                android:icon="@drawable/ic_arrow_alt_right"
+                android:title="a → あ (coming soon)" />
+            <item
+                android:icon="@drawable/ic_arrow_alt_right"
+                android:title="ア → a (coming soon)" />
+            <item
+                android:icon="@drawable/ic_arrow_alt_right"
+                android:title="a → ア (coming soon)" />
+        </menu>
+    </item>
+    <item android:title="Others">
+        <menu>
+            <item
+                android:icon="@drawable/ic_chart_line"
+                android:title="Your statistics (coming soon)" />
+            <item
+                android:icon="@drawable/ic_trophy_alt"
+                android:title="Achivments (coming soon)" />
+            <item
+                android:icon="@drawable/ic_cog"
+                android:title="Settings (coming soon)" />
+        </menu>
+    </item>
+</menu>
