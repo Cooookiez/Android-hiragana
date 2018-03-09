@@ -148,15 +148,15 @@ public class MainActivity extends AppCompatActivity {
         tv_hira2lati_wrong = (TextView)findViewById(R.id.tv_hira2lati_wrong);
         rand = new Random();
 
-        btts[0] = (Button)findViewById(R.id.btt_1);
-        btts[1] = (Button)findViewById(R.id.btt_2);
-        btts[2] = (Button)findViewById(R.id.btt_3);
-        btts[3] = (Button)findViewById(R.id.btt_4);
-        btts[4] = (Button)findViewById(R.id.btt_5);
-        btts[5] = (Button)findViewById(R.id.btt_6);
-        btts[6] = (Button)findViewById(R.id.btt_7);
-        btts[7] = (Button)findViewById(R.id.btt_8);
-        btts[8] = (Button)findViewById(R.id.btt_9);
+        btts[0] = (Button)findViewById(R.id.btt_0);
+        btts[1] = (Button)findViewById(R.id.btt_1);
+        btts[2] = (Button)findViewById(R.id.btt_2);
+        btts[3] = (Button)findViewById(R.id.btt_3);
+        btts[4] = (Button)findViewById(R.id.btt_4);
+        btts[5] = (Button)findViewById(R.id.btt_5);
+        btts[6] = (Button)findViewById(R.id.btt_6);
+        btts[7] = (Button)findViewById(R.id.btt_7);
+        btts[8] = (Button)findViewById(R.id.btt_8);
 
         int nr = 0;
         lati[nr] = "a";     hira[nr]="あ";   nr++;
@@ -219,13 +219,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initAdMob(){
-        //MobileAds.initialize(this, "ca-app-pub-9317173642585148~2178125680"); //releace
-        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713"); //debug
+        MobileAds.initialize(this, "ca-app-pub-9317173642585148~2178125680"); //releace
+        //MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713"); //debug
 
         AdView adView = new AdView(this);
         adView.setAdSize(AdSize.SMART_BANNER);
-        //adView.setAdUnitId("ca-app-pub-9317173642585148/9198829602"); //releace
-        adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111"); //debug
+        adView.setAdUnitId("ca-app-pub-9317173642585148/9198829602"); //releace
+        //adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111"); //debug
 
         mAdView = findViewById(R.id.adBaner);
         AdRequest adRequest = new AdRequest.Builder().build();
