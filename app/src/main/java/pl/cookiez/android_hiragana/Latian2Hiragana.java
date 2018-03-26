@@ -16,8 +16,7 @@ import com.google.android.gms.ads.MobileAds;
 
 import java.util.Random;
 
-public class Hiragana2Latian extends AppCompatActivity {
-
+public class Latian2Hiragana extends AppCompatActivity {
 
     private AdView mAdView;
 
@@ -71,11 +70,8 @@ public class Hiragana2Latian extends AppCompatActivity {
     }
 
     private void writeScore(){
-        int correct = sharedPreferences.getInt("hira2lati_correct", 0);
-        int wrong = sharedPreferences.getInt("hira2lati_wrong", 0);
-
-        Log.i("writeScore_correct",String.valueOf(correct));
-        Log.i("writeScore_wrong",String.valueOf(wrong));
+        int correct = sharedPreferences.getInt("lati2hira_correct", 0);
+        int wrong = sharedPreferences.getInt("lati2hira_wrong", 0);
 
         if(correct>9999) tv_correct.setText("9999+");
         else tv_correct.setText(String.valueOf(correct));
@@ -97,15 +93,15 @@ public class Hiragana2Latian extends AppCompatActivity {
 
         //odpowiedz
         whichCharIsTrue = rand.nextInt(chars.hmChars);
-        tv_what_is_it.setText(chars.hira[whichCharIsTrue]);
-        bttsC[0] = chars.lati[whichCharIsTrue];
+        tv_what_is_it.setText(chars.lati[whichCharIsTrue]);
+        bttsC[0] = chars.hira[whichCharIsTrue];
 
         //przypisanie do guzików innych losowych odp
         Boolean alreadyExist = false;
         for(int i = 1; i < 9; i++){
             do{
                 alreadyExist = false;
-                bttsC[i] = chars.lati[rand.nextInt(chars.hmChars)];
+                bttsC[i] = chars.hira[rand.nextInt(chars.hmChars)];
                 for(int j = 0; j < i; j++){
                     if(bttsC[i] == bttsC[j]){
                         alreadyExist = true;
@@ -137,7 +133,7 @@ public class Hiragana2Latian extends AppCompatActivity {
             //kturt guzik jest dobry
             int correctBotton = 0;
             for(int i = 0; i < 9; i++){
-                if(btts[i].getText().toString() == chars.lati[whichCharIsTrue]){
+                if(btts[i].getText().toString() == chars.hira[whichCharIsTrue]){
                     correctBotton = i;
                     Log.i("correct btt", String.valueOf(correctBotton));
                     break;
@@ -146,13 +142,13 @@ public class Hiragana2Latian extends AppCompatActivity {
 
             //dodanie punktu do jednej z zmiennyhc trwałyhc
             if(correctBotton == btt_nr){//poprawne
-                int val = sharedPreferences.getInt("hira2lati_correct",0);
+                int val = sharedPreferences.getInt("lati2hira_correct",0);
                 val++;
-                sharedPreferences.edit().putInt("hira2lati_correct", val).apply();
+                sharedPreferences.edit().putInt("lati2hira_correct", val).apply();
             }else{//niepoprawne
-                int val = sharedPreferences.getInt("hira2lati_wrong",0);
+                int val = sharedPreferences.getInt("lati2hira_wrong",0);
                 val++;
-                sharedPreferences.edit().putInt("hira2lati_wrong", val).apply();
+                sharedPreferences.edit().putInt("lati2hira_wrong", val).apply();
             }
             writeScore();
 

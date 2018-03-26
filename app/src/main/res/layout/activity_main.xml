@@ -18,16 +18,37 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/mainAdBaner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintWidth_max="400dp">
 
         <Button
             android:id="@+id/btt_hira2lati"
             style="@style/btt_menu"
             android:layout_width="match_parent"
+            android:text="Hiragana to Latian (あ → A)"
+            android:textAlignment="center"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btt_lati2hira"
+            style="@style/btt_menu"
+            android:layout_width="match_parent"
+            android:text="Latian to Hiragana (A → あ)"
+            android:textAlignment="center"
+            android:textAllCaps="false" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <Button
+            android:id="@+id/btt_stat"
+            style="@style/btt_menu"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="btt_hira2lati"
+            android:text="Statistics"
             android:textAlignment="center"
             android:textAllCaps="false" />
 
