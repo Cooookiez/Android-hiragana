@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context="pl.cookiez.android_hiragana.Statistic"
+    tools:layout_editor_absoluteY="81dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/mainAdBaner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintWidth_max="400dp">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Hiragana to Latian (あ → A)"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_h2l_correct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="@color/CorrectColorPrimary" />
+
+            <TextView
+                android:id="@+id/tv_h2l_wrong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="@color/WrongColorPrimary" />
+
+            <Button
+                android:id="@+id/btt_clearHira2Lati"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/WrongColorPrimary"
+                android:text="Wyczyść"
+                android:textColor="@color/WrongColorAccent" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Latian to Hiragana (A → あ)"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_l2h_correct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="@color/CorrectColorPrimary" />
+
+            <TextView
+                android:id="@+id/tv_l2h_wrong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="@color/WrongColorPrimary" />
+
+            <Button
+                android:id="@+id/btt_clearLati2Hira"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/WrongColorPrimary"
+                android:text="Wyczyść"
+                android:textColor="@color/WrongColorAccent" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/mainAdBaner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:adSize="SMART_BANNER"
+        app:adUnitId="ca-app-pub-9317173642585148/9198829602"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"></com.google.android.gms.ads.AdView>
+</android.support.constraint.ConstraintLayout>
